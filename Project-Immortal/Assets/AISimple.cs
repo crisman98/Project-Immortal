@@ -50,4 +50,4 @@ public class AISimple : MonoBehaviour
 	{
 		transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 	}
-)
+}
