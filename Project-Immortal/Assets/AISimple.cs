@@ -6,7 +6,7 @@ using System;
 public class AISimple : MonoBehaviour 
 {
 	public float Distance;
-	public float Transform Target;
+	public Transform target;
 	public float lookAtDistance = 25.0;
 	public float attackRange = 15.0;
 	public float movespeed = 5.0;
@@ -19,7 +19,7 @@ public class AISimple : MonoBehaviour
 	
 	void Update()
 	{
-		Distance = Vector3.Distance(Target.position, transform.position);
+		Distance = Vector3.Distance(target.position, transform.position);
 		
 		if (Distance < lookAtDistance)
 		{
@@ -42,7 +42,7 @@ public class AISimple : MonoBehaviour
 
 	void lookAt()
 	{
-		float rotation = Quaternion.LookRotation(Target.position - transform.position);
+		float rotation = Quaternion.LookRotation(target.position - transform.position);
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
 	}
 	

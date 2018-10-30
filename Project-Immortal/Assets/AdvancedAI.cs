@@ -47,7 +47,7 @@ public class AISimple : MonoBehaviour
 			attack();
 		}
 		
-		else if
+		else if (Distance < chaseRange)
 		{
 			chase();
 		}
@@ -56,7 +56,7 @@ public class AISimple : MonoBehaviour
 	void lookAt()
 	{
 		renderer.material.color = Color.yellow;
-		float rotation = Quaternion.LookRotation(Target.position - transform.position);
+		Quaternion rotation = Quaternion.LookRotation(Target.position - transform.position);
 		transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * Damping);
 	}
 	
@@ -67,7 +67,7 @@ public class AISimple : MonoBehaviour
 		moveDirection = transform.forward;
 		moveDirection *= moveSpeed;
 		
-		moveDirection.y -= gravity * Time.deltaTime);
+		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move(moveDirection * Time.deltaTime);
 	}
 	
@@ -76,7 +76,7 @@ public class AISimple : MonoBehaviour
 		if (Time.time > attackTime)
 		{
 			Target.SendMessage("ApplyDamage", TheDamage);
-			Debug.Log("The Enemy Has Attacked);
+			Debug.Log("The Enemy Has Attacked");
 			attackTime = Time.time + attackRepeatTime;
 		}
 	}
@@ -87,4 +87,4 @@ public class AISimple : MonoBehaviour
 		moveSpeed += 2;
 		lookAtDistance += 40;
 	}
-)
+}
